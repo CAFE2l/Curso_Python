@@ -1,7 +1,9 @@
+#TUTORIAL
 def título(txt):
     print('-'*30)
     print(txt)
     print('-'*30)
+    return
 #Programa Principal
 # print('-'*30)
 # lin()
@@ -19,6 +21,8 @@ def título(txt):
 # # print('-'*30)
 # lin()
 
-título = ('   CURSO EM VÍDEO    ')
-título = ('   APRENDA PYTHON    ')
-título = ('   GUSTAVO GUANABARA    ')
+título("   CURSO EM VÍDEO    ")
+título('   APRENDA PYTHON    ')
+título('   GUSTAVO GUANABARA    ')
+
+#PARTE PRÁTICA
