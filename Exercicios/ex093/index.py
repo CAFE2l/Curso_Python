@@ -116,7 +116,7 @@ if total_pessoas > 0:
     
     # Lista de pessoas acima da média
     print(f"\n{cores['cinza']}{estilos['negrito']}Lista das pessoas que estão acima da média {cores['vermelho']}({media_idade:.2f}{cores['cinza']} anos):")
-    pessoas_acima_media = []
+    pessoas_acima_media = []/
     
     for pessoa in pessoas:
         if pessoa['idade'] > media_idade:
