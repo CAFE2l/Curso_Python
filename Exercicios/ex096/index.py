@@ -74,3 +74,22 @@ def escreva(texto):
 # Você também pode pedir para o usuário digitar:
 frase_usuario = str(input(f"{cores['cinza']}{estilos['negrito']}Escreva uma frase qualquer: {estilos['reset']}"))
 escreva(frase_usuario)
+
+
+solution = "SOLUÇÃO DO GUANÁ"
+
+print(f"{estilos['negrito']}{cores['ciano']}{"==="*5}{cores['cinza']}GUANÁ{cores['ciano']}{"==="*5}{cores['limpa']}")
+print(f"{cores['pretoebranco']}{estilos['negrito']}{solution.center(35)}{cores['limpa']}")
+print(f"{estilos['negrito']}{cores['ciano']}{"==="*11+"=="}{cores['limpa']}")
+
+
+def escreva(msg):
+    tam = len(msg) + 4
+    print('~' * tam)
+    print(f"  {msg}  ")
+    print('~'*tam)
+
+#programa principal
+escreva('gustavo guanabara')
+escreva('curso de python no youtube')
+escreva('CeV')
