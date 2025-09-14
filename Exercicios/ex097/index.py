@@ -97,3 +97,13 @@ solution = "SOLUÇÃO DO GUANÁ"
 print(f"{estilos['negrito']}{cores['ciano']}{"==="*5}{cores['cinza']}GUANÁ{cores['ciano']}{"==="*5}{cores['limpa']}")
 print(f"{cores['pretoebranco']}{estilos['negrito']}{solution.center(35)}{cores['limpa']}")
 print(f"{estilos['negrito']}{cores['ciano']}{"==="*11+"=="}{cores['limpa']}")
+
+
+def contador(i, f, p):
+    print(f"contagem de {i} ate {f} de {p} em {p}")
+    
+
+
+
+#programa principal:
+contador(1, 10, 1)
