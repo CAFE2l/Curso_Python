@@ -68,3 +68,29 @@ def voto(nascimento):
 
 nascimento = int(input(f'{estilos['negrito']}{cores['cinza']}Em que ano você nasceu? {estilos['reset']}'))
 print(voto(nascimento))
+
+
+
+
+solution = "SOLUÇÃO DO GUANÁ"
+
+print(f"{estilos['negrito']}{cores['ciano']}{"==="*5}{cores['cinza']}GUANÁ{cores['ciano']}{"==="*5}{cores['limpa']}")
+print(f"{cores['pretoebranco']}{estilos['negrito']}{solution.center(35)}{cores['limpa']}")
+print(f"{estilos['negrito']}{cores['ciano']}{"==="*11+"=="}{cores['limpa']}")
+
+
+
+def voto(ano):
+    from datetime import date
+    atual  = date.today().year
+    idade = atual - ano
+    if idade < 16:
+        return f"com {idade} anos: NÃO VOTA."
+    elif 16 <= idade < 18 or idade > 65:
+        return f"com {idade} anos: VOTO OPCIONAL."
+    else: 
+        return f"com {idade} anos: VOTO OBRIGATÓRIO."
+#Programa Principal
+nasc = int(input("Em que ano você nasceu? "))
+
+print(voto(nasc))
