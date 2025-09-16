@@ -62,32 +62,32 @@ numeros = []  # Lista vazia para receber os números
 
 def sorteia():
     """Função que sorteia 5 números e coloca na lista"""
-    print("Sorteando 5 números...")
+    print(f"{cores['vermelho']}{estilos['negrito']}{estilos['italico']}Sorteando 5 números...{estilos['reset']}")
     
     for i in range(5):
         numero_sorteado = randint(1, 10)  # Sorteia número de 1 a 10
         numeros.append(numero_sorteado)   # Adiciona na lista
-        print(f"Sorteei o número: {numero_sorteado}")
+        print(f"{cores['cinza']}{estilos['negrito']}Sorteei o número: {cores['vermelho']}{estilos['italico']}{estilos['sublinhado']}{numero_sorteado}{estilos['reset']}")
     
-    print(f"Lista completa: {numeros}")
+    print(f"{cores['cinza']}{estilos['negrito']}Lista completa: {cores['verde']}{estilos['italico']}{numeros}{estilos['reset']}")
 
 def somaPar():
     """Função que soma apenas os números PARES da lista"""
     soma = 0
     pares_encontrados = []
     
-    print("\nVerificando números pares...")
+    print(f"{cores['cinza']}{estilos['italico']}\nVerificando números pares...{estilos['reset']}")
     
     for numero in numeros:
         if numero % 2 == 0:  # Se for par
-            print(f"O número {numero} é PAR")
+            print(f"{cores['cinza']}{estilos['negrito']}O número {cores['amarelo']}{numero} {cores['cinza']}é {cores['verde']}PAR{estilos['reset']}")
             soma += numero
             pares_encontrados.append(numero)
         else:
-            print(f"O número {numero} é ÍMPAR")
+            print(f"{cores['cinza']}{estilos['negrito']}O número {cores['amarelo']}{numero} {cores['cinza']}é {cores['vermelho']}ÍMPAR{estilos['reset']}")
     
-    print(f"Números pares encontrados: {pares_encontrados}")
-    print(f"Soma dos pares: {soma}")
+    print(f"{cores['cinza']}{estilos['negrito']}Números {cores['verde']}pares {cores['cinza']}encontrados: {cores['vermelho']}{pares_encontrados}{estilos['reset']}")
+    print(f"{cores['cinza']}{estilos['negrito']}Soma dos {cores['verde']}pares: {cores['roxo']}{soma}{estilos['reset']}")
 
 # PROGRAMA PRINCIPAL
 print("="*40)
