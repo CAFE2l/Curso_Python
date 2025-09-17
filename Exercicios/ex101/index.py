@@ -52,4 +52,17 @@ print(f"{cores['azul']}{fundo['branco']}{estilos['negrito']}{frase.center(35)}{c
 print(f"{estilos['negrito']}{cores['verde']}{"==="*11+"=="}{cores['limpa']}") 
 
 def fatorial(numero, show):
-    
+    num = int(input("Digite um numero para saber seu fatorial: "))
+    f = 1
+    for c in range(num, 0, -1):
+         
+        if show == True:
+            num *= c -1
+            
+            print(c, end='')
+            if c > 1:
+                print(' x ', end='')
+            else:
+                print(' = ', end='')
+                print(num)
+fatorial(5, True)
