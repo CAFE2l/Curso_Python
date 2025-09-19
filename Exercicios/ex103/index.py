@@ -69,3 +69,31 @@ def leiaint():
 
 
 leiaint()
+
+
+solution = "SOLUÇÃO DO GUANÁ"
+
+print(f"{estilos['negrito']}{cores['ciano']}{"==="*5}{cores['cinza']}GUANÁ{cores['ciano']}{"==="*5}{cores['limpa']}")
+print(f"{cores['pretoebranco']}{estilos['negrito']}{solution.center(35)}{cores['limpa']}")
+print(f"{estilos['negrito']}{cores['ciano']}{"==="*11+"=="}{cores['limpa']}")
+
+
+def leiaint(msg):
+    ok = False
+    valor = 0
+    while True:
+        n = str(input(msg))
+        if n.isnumeric():
+            valor = int(n)
+            ok = True
+        else:
+            print(f"{cores['vermelho']}ERRO! Digite um número inteiro válido.{cores['limpa']}")
+
+        if ok:
+            break
+    return valor
+
+
+
+
+
