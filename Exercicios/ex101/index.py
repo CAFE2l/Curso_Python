@@ -72,3 +72,36 @@ def fatorial(numero=None, show=None):
 # Pode usar das duas formas:
 fatorial()        # Pede pro usuário
 fatorial(5, True) # Ou passa direto
+
+
+
+
+solution = "SOLUÇÃO DO GUANÁ"
+
+print(f"{estilos['negrito']}{cores['ciano']}{"==="*5}{cores['cinza']}GUANÁ{cores['ciano']}{"==="*5}{cores['limpa']}")
+print(f"{cores['pretoebranco']}{estilos['negrito']}{solution.center(35)}{cores['limpa']}")
+print(f"{estilos['negrito']}{cores['ciano']}{"==="*11+"=="}{cores['limpa']}")
+
+
+def fatorial(n, show=False):
+    """"
+    -> Calcula o fatorial de um número.
+    :param n: O número a ser calculado.
+    :param show: (opcional) Mostrar ou não a conta.
+    :return: O valor do fatorial de um número n.
+    """
+    f = 1
+    for c in range(n, 0, -1):
+        if show:
+            print(c, end='')
+            if c > 1:
+                print(' x ', end='')
+            else:
+                print(' = ', end='')
+    
+        f *= c
+    return f
+
+#progrma principal
+
+print(fatorial(5, show=True))
