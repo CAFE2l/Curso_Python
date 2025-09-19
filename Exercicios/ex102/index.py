@@ -94,3 +94,27 @@ else:
     ficha()
 
 print(f"{estilos['negrito']}{cores['amarelo']}{"="*50}{estilos['reset']}")
+
+
+solution = "SOLUÇÃO DO GUANÁ"
+
+print(f"{estilos['negrito']}{cores['ciano']}{"==="*5}{cores['cinza']}GUANÁ{cores['ciano']}{"==="*5}{cores['limpa']}")
+print(f"{cores['pretoebranco']}{estilos['negrito']}{solution.center(35)}{cores['limpa']}")
+print(f"{estilos['negrito']}{cores['ciano']}{"==="*11+"=="}{cores['limpa']}")
+
+#Programa Principal 
+def ficha(jog="<desconhecido>", gol=0):
+    print(f"O jogador {jog} fez {gol} gol(s) no campeonato.")
+
+n = str(input("Nome do jogador: "))
+g = str(input("Número de gols: "))
+
+if g.isnumeric():
+    g = int(g)
+else: 
+    g = 0
+
+if n.strip() == "":
+    ficha(gol=g)
+else:
+    ficha(n, g)
