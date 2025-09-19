@@ -47,22 +47,28 @@ estilos = {
 }
 frase = "FATORIAL DE UM NÚMERO"
 
-print(f"{estilos['negrito']}{cores['vermelho']}{"==="*4+"="}{cores['cinza']}FATORIAL{cores['azul']}{"==="*5}{cores['limpa']}")
+print(f"{estilos['negrito']}{cores['vermelho']}{"==="*4}{cores['cinza']}FATORIAL{cores['azul']}{"==="*5}{cores['limpa']}")
 print(f"{cores['azul']}{fundo['branco']}{estilos['negrito']}{frase.center(35)}{cores['limpa']}")
 print(f"{estilos['negrito']}{cores['verde']}{"==="*11+"=="}{cores['limpa']}") 
 
-def fatorial(numero, show):
-    num = int(input("Digite um numero para saber seu fatorial: "))
+def fatorial(numero=None, show=None):
+    # Se não passou parâmetros, pede pro usuário
+    if numero is None:
+        numero = int(input(f"{cores['cinza']}{estilos['negrito']}{estilos['italico']}Digite um número: "))
+    if show is None:
+        show = input(f"{cores['cinza']}{estilos['negrito']}{estilos['italico']}Quer ver o cálculo? {cores['vermelho']}{estilos['sublinhado']}(s/n):{cores['limpa']} ") == 's'
+    
     f = 1
-    for c in range(num, 0, -1):
-         
-        if show == True:
-            num *= c -1
-            
+    for c in range(numero, 0, -1):
+        f *= c
+        if show:
             print(c, end='')
             if c > 1:
-                print(' x ', end='')
+                print(f' {cores['verde']}{estilos['negrito']}x{estilos['reset']} ', end='')
             else:
-                print(' = ', end='')
-                print(num)
-fatorial(5, True)
+                print(f' = {cores['vermelho']}{estilos['negrito']}{f}{estilos['reset']}')
+    return f
+
+# Pode usar das duas formas:
+fatorial()        # Pede pro usuário
+fatorial(5, True) # Ou passa direto
