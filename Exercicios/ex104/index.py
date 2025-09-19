@@ -74,10 +74,16 @@ print(f"{cores['pretoebranco']}{estilos['negrito']}{solution.center(35)}{cores['
 print(f"{estilos['negrito']}{cores['ciano']}{"==="*11+"=="}{cores['limpa']}")
 
 def notas(*n, sit=False):
+    """
+    -> Função para analisar notas e situações de vários alunos.
+    :param n: uma ou mais notas dos alunos (aceita várias)
+    :param sit: valor opcional, indicando se deve ou não adicionar a situação
+    :return: dicionário com várias informações sobre a situação da turma.
+    """
     r = dict()
-    r['total'] = len(n),
-    r['maior'] = max(n),
-    r['menor'] = min(n),
+    r['total'] = len(n)
+    r['maior'] = max(n)
+    r['menor'] = min(n)
     r['media'] = sum(n) / len(n)
 
     if sit:
@@ -88,9 +94,7 @@ def notas(*n, sit=False):
         else:
             r['situação'] = 'RUIM'
 
-
     return r
-
 
 #programa principal
 resp = notas(9, 10, 5.5, 2.5, 9, 8.5, sit=True)
