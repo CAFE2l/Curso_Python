@@ -117,7 +117,7 @@ def titulo(msg, simbolo='~'):
     tam = len(msg) + 4
     
     print(simbolo * tam)
-    print(f" {msg}  ")
+    print(f" {msg}  ") 
     print(simbolo * tam)
 
 
