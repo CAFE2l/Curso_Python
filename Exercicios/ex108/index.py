@@ -60,3 +60,18 @@ print(f"{estilos['negrito']}{cores['cinza']}O {cores['ciano']}dobro {cores['cinz
 print(f"{estilos['negrito']}{cores['cinza']}Com o {cores['verde']}aumento {cores['cinza']}de {cores['verde']}{moedas.moeda(p)}{cores['cinza']} é {cores['verde']}{moedas.aumentar(p, 10)}{cores['limpa']}")
 print(f"{estilos['negrito']}{cores['cinza']}Com a {cores['vermelho']}redução {cores['cinza']}de {cores['vermelho']}{moedas.moeda(p)}{cores['cinza']} é {cores['vermelho']}{moedas.diminuir(p, 10)}{cores['limpa']}")
 
+
+
+solution = "SOLUÇÃO DO GUANÁ"
+
+print(f"{estilos['negrito']}{cores['ciano']}{"==="*5}{cores['cinza']}GUANÁ{cores['ciano']}{"==="*5}{cores['limpa']}")
+print(f"{cores['pretoebranco']}{estilos['negrito']}{solution.center(35)}{cores['limpa']}")
+print(f"{estilos['negrito']}{cores['ciano']}{"==="*11+"=="}{cores['limpa']}")
+
+from modulos import moeda
+
+p = float(input("Digite o preço: R$"))
+print(f"A metade de {moeda.moeda(p)} é {moeda.metade(p, True)}")
+print(f"O dobro de {moeda.moeda(p)} é {moeda.dobro(p, True)}")
+print(f"Com o aumento de 10%, temos {moeda.aumentar(p, 10, True)}")
+print(f"Reduzindo 13% temos, {moeda.diminuir(p, 13, True)}")
