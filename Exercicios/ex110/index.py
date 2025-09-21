@@ -53,7 +53,7 @@ print(f"{cores['cinza']}{fundo['branco']}{estilos['negrito']}{frase.center(35)}{
 print(f"{estilos['negrito']}{cores['vermelho']}{"==="*11+"=="}{cores['limpa']}") 
 
 
-from modulos import moedas
+from modulos import __init__ as moedas
 
 moedas.resumo()
 
@@ -65,7 +65,7 @@ print(f"{estilos['negrito']}{cores['ciano']}{"==="*5}{cores['cinza']}GUANÁ{core
 print(f"{cores['pretoebranco']}{estilos['negrito']}{solution.center(35)}{cores['limpa']}")
 print(f"{estilos['negrito']}{cores['ciano']}{"==="*11+"=="}{cores['limpa']}")
 
-from modulos import moeda
+from modulos import __init__ as moedas
 
 p = float(input("Digite o preço: R$"))
-moeda.resumo(p)
+moedas.resumo(p)
