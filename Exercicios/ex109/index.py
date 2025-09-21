@@ -56,3 +56,16 @@ print(f"{estilos['negrito']}{cores['vermelho']}{"==="*11+"=="}{cores['limpa']}")
 from modulos import moedas
 
 moedas.resumo()
+
+
+
+solution = "SOLUÇÃO DO GUANÁ"
+
+print(f"{estilos['negrito']}{cores['ciano']}{"==="*5}{cores['cinza']}GUANÁ{cores['ciano']}{"==="*5}{cores['limpa']}")
+print(f"{cores['pretoebranco']}{estilos['negrito']}{solution.center(35)}{cores['limpa']}")
+print(f"{estilos['negrito']}{cores['ciano']}{"==="*11+"=="}{cores['limpa']}")
+
+from modulos import moeda
+
+p = float(input("Digite o preço: R$"))
+moeda.resumo(p)
