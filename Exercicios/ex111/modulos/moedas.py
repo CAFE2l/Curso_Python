@@ -46,57 +46,124 @@ estilos = {
     "visivel": "\033[28m",
     "sem_tachado": "\033[29m"
 }
-
-preço = float(input(f'{cores["cinza"]}{estilos["negrito"]}Digite o preço: {cores["verde"]}{estilos["italico"]}R${estilos["reset"]}'))
-taxa = int(input(f'{cores["cinza"]}{estilos["negrito"]}Digite um valor para a taxa aplicada: {cores["verde"]}{estilos["italico"]}{estilos["reset"]}'))
-
-
-
-def diminuir(preço=0, taxa=0, formato=False):
-    res = preço - (preço * taxa / 100)
-    return res if formato is False else moeda(res)
-
-
-def dobro(preço=0, formato=False):
-    res = preço * 2
-    return res if formato is False else moeda(res)
-
-
-def metade(preço=0, formato=False):
-    res = preço / 2
-    return res if formato is False else moeda(res)
-
-
-
-def resumo():
-    print(f"{cores['amarelo']}{estilos['negrito']}{'-' * 30}{cores['limpa']}")
-    print(f'{cores['vermelho']}{estilos['negrito']}RESUMO DO VALOR{cores['limpa']}'.center(30))
-    print(f"{cores['amarelo']}{estilos['negrito']}{'-' * 30}{cores['limpa']}")
-    print(f'{estilos['negrito']}{cores['cinza']}Preço analisado: {cores['verde']}\t{moeda(preço)}')
-    print(f'{estilos['negrito']}{cores['cinza']}Dobro do preço: {cores['amarelo']}\t{dobro(preço, True)}')
-    print(f'{estilos['negrito']}{cores['cinza']}Metade do preço: {cores['roxo']}\t{metade(preço, True)}')
-    print(f'{estilos['negrito']}{cores['cinza']}Com {taxa}% de desconto: {cores['verde']}\t{diminuir(preço, taxa, True)}')
-    print(f'{estilos['negrito']}{cores['cinza']}Com {taxa}% de aumento: {cores['vermelho']}\t{aumentar(preço, taxa, True)}')
-    print(f"{cores['amarelo']}{estilos['negrito']}{'-' * 30}{cores['limpa']}")
-def moeda(preço=0, simbolo='R$'):
-    return f"{simbolo} {preço:.2f}".replace('.', ',')
-
 def leiaDinheiro(msg="Digite o preço: R$ "):
+    """Função que LÊ e RETORNA um valor monetário"""
     while True:
         try:
-            valor = float(input(msg).strip().replace(',', '.'))
-            return valor
+            entrada = input(f'{cores["cinza"]}{estilos["negrito"]}{msg}{cores["verde"]}{cores["limpa"]}')
+            valor = float(entrada.strip().replace(',', '.'))
+            if valor < 0:
+                print(f'{cores["vermelho"]}{estilos["negrito"]}ERRO: Valor não pode ser negativo!{cores["limpa"]}')
+                continue
+            return valor  # ← RETORNA o valor lido
         except ValueError:
-            print("ERRO: Valor inválido!")
+            print(f'{cores["vermelho"]}{estilos["negrito"]}ERRO: Digite um valor válido!{cores["limpa"]}')
+
+def leiaTaxa(msg="Digite a taxa (%): "):
+    """Função que LÊ e RETORNA uma taxa"""
+    while True:
+        try:
+            entrada = input(f'{cores["cinza"]}{estilos["negrito"]}{msg}{cores["verde"]}{cores["limpa"]}')
+            taxa = float(entrada.strip())
+            return taxa  # ← RETORNA a taxa lida
+        except ValueError:
+            print(f'{cores["vermelho"]}{estilos["negrito"]}ERRO: Digite uma taxa válida!{cores["limpa"]}')
+
+def moeda(preço=0):
+    """Formata valor como moeda"""
+    return f"R$ {preço:.2f}".replace('.', ',')
+
+def aumentar(preço=0, taxa=0, formato=True):
+    """Calcula aumento percentual"""
+    res = preço + (preço * taxa / 100)
+    return moeda(res) if formato else res
+
+def diminuir(preço=0, taxa=0, formato=True):
+    """Calcula diminuição percentual"""
+    res = preço - (preço * taxa / 100)
+    return moeda(res) if formato else res
+
+def dobro(preço=0, formato=True):
+    """Calcula o dobro do preço"""
+    res = preço * 2
+    return moeda(res) if formato else res
+
+def metade(preço=0, formato=True):
+    """Calcula a metade do preço"""
+    res = preço / 2
+    return moeda(res) if formato else res
+
+def resumo(preço, taxa):
+    """
+    ✅ FUNÇÃO CORRIGIDA - Recebe os valores como parâmetros
+    
+    Parâmetros:
+    - preço: valor já lido e validado
+    - taxa: taxa já lida e validada
+    """
+    print(f"{cores['amarelo']}{estilos['negrito']}{'-' * 30}{cores['limpa']}")
+    print(f'{cores["vermelho"]}{estilos["negrito"]}RESUMO DO VALOR{cores["limpa"]}'.center(30))
+    print(f"{cores['amarelo']}{estilos['negrito']}{'-' * 30}{cores['limpa']}")
+    print(f'{estilos["negrito"]}{cores["cinza"]}Preço analisado: {cores["verde"]}\t{leiaDinheiro(preço, True)}')
+    print(f'{estilos["negrito"]}{cores["cinza"]}Dobro do preço: {cores["amarelo"]}\t{dobro(preço, True)}')
+    print(f'{estilos["negrito"]}{cores["cinza"]}Metade do preço: {cores["roxo"]}\t{metade(preço, True)}')
+    print(f'{estilos["negrito"]}{cores["cinza"]}Com {taxa}% de desconto: {cores["verde"]}\t{diminuir(preço, taxa, True)}')
+    print(f'{estilos["negrito"]}{cores["cinza"]}Com {taxa}% de aumento: {cores["vermelho"]}\t{aumentar(preço, taxa, True)}')
+    print(f"{cores['amarelo']}{estilos['negrito']}{'-' * 30}{cores['limpa']}")
+
+
+
+def leiaDinheiro(msg="Digite um valor: R$ "):
+    """Versão mais simples da função"""
+    while True:
+        try:
+            entrada = input(msg).strip()
+            
+            # Remove símbolos monetários
+            valor_limpo = entrada.replace("R$", "").replace("$", "").strip()
+            
+            # Troca vírgula por ponto
+            valor_limpo = valor_limpo.replace(",", ".")
+            
+            # Converte para float
+            valor = float(valor_limpo)
+            
+            if valor < 0:
+                print("❌ ERRO: Valor não pode ser negativo!")
+                continue
+                
+            return valor
+            
+        except ValueError:
+            print(f"❌ ERRO: '{entrada}' é inválido!")
 
 def leiaTaxa(msg="Digite a taxa (%): "):
     while True:
         try:
-            taxa = float(input(msg).strip())
+            entrada = input(msg).strip()
+            
+            if entrada == "":
+                print("❌ ERRO: Digite uma taxa!")
+                continue
+            
+            # Verifica palavras inválidas
+            palavras_invalidas = ["MUITO", "POUCO", "ALTO", "BAIXO", "BARATO", "CARO"]
+            if any(palavra in entrada.upper() for palavra in palavras_invalidas):
+                print(f"❌ ERRO: '{entrada}' não é uma taxa válida!")
+                continue
+            
+            if not any(char.isdigit() for char in entrada):
+                print(f"❌ ERRO: '{entrada}' não é uma taxa válida!")
+                continue
+            
+            taxa_limpa = entrada.replace("%", "").replace("+", "").replace(",", ".")
+            taxa = float(taxa_limpa)
+            
+            if taxa < -100:
+                print("❌ ERRO: Taxa não pode ser menor que -100%!")
+                continue
+            
             return taxa
+            
         except ValueError:
-            print("ERRO: Taxa inválida!")
-
-def aumentar(preço=0, taxa=0, formato=True):
-    res = preço + (preço * taxa / 100)
-    return moeda(res) if formato else res
+            print(f"❌ ERRO: '{entrada}' não é uma taxa válida!")
