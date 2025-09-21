@@ -82,3 +82,29 @@ def leiaFloat():
 #Progrma Principal 
 leiaInt()
 leiaFloat()
+
+
+
+
+solution = "SOLUÇÃO DO GUANÁ"
+
+print(f"{estilos['negrito']}{cores['ciano']}{"==="*5}{cores['cinza']}GUANÁ{cores['ciano']}{"==="*5}{cores['limpa']}")
+print(f"{cores['pretoebranco']}{estilos['negrito']}{solution.center(35)}{cores['limpa']}")
+print(f"{estilos['negrito']}{cores['ciano']}{"==="*11+"=="}{cores['limpa']}")
+
+
+def leiaInt(msg):
+    while True:
+        try:
+            n = int(input(msg))
+        except (ValueError, TypeError):
+            print(f"{cores['vermelho']}{estilos['negrito']}ERRO: por favor, digite um número inteiro válido.{cores['limpa']}")
+            continue
+        except (KeyboardInterrupt):
+            print(f"{cores['vermelho']}{estilos['negrito']}O usuário preferiu não digitar esse número.{cores['limpa']}")
+            return 0
+        else:
+            return n 
+
+num = int(input("Digite um valor: "))
+print(f"O valor digitado foi {num}")
