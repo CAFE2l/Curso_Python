@@ -48,7 +48,7 @@ estilos = {
 }
 frase = "CASA DO CÂMBIO V4.0"
 
-print(f"{estilos['negrito']}{cores['azul']}{"==="*4}{cores['cinza']}CÂMBIO_V2.0{cores['verde']}{"==="*4}{cores['limpa']}")
+print(f"{estilos['negrito']}{cores['azul']}{"==="*4}{cores['cinza']}CÂMBIO_V4.0{cores['verde']}{"==="*4}{cores['limpa']}")
 print(f"{cores['cinza']}{fundo['branco']}{estilos['negrito']}{frase.center(35)}{cores['limpa']}")
 print(f"{estilos['negrito']}{cores['vermelho']}{"==="*11+"=="}{cores['limpa']}") 
 
