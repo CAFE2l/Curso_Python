@@ -1,11 +1,59 @@
-# 🌐 TESTE DE CONECTIVIDADE - pudim.com.br
+cores = {
+    "limpa": "\033[m",
+    'vermelho': "\033[31m",
+    'verde': "\033[32m",
+    'amarelo': "\033[33m",
+    'azul': "\033[34m",
+    'roxo': "\033[35m",
+    'ciano': "\033[36m",
+    'cinza': "\033[37m",
+    'pretoebranco': '\033[7;30m'
+}
 
-print("="*60)
-print("🍮 TESTADOR DE SITE - PUDIM.COM.BR")
-print("="*60)
+fundo = {
+    "branco": "\033[40m",
+    'vermelho': "\033[41m",
+    'verde': "\033[42m",
+    'amarelo': "\033[43m",
+    'azul': "\033[44m",
+    'roxo': "\033[45m",
+    'ciano': "\033[46m",
+    'cinza': "\033[47m",
+    'vermelho_claro': '\033[101m',
+    'verde_claro': '\033[102m',
+    'amarelo_claro': '\033[103m',
+    'azul_claro': '\033[104m',
+    'roxo_claro': '\033[105m',
+    'ciano_claro': '\033[106m',
+    'cinza_claro': '\033[107m'
+}
+
+estilos = {
+    "reset": "\033[0m",
+    "negrito": "\033[1m",
+    "fraco": "\033[2m",
+    "italico": "\033[3m",
+    "sublinhado": "\033[4m",
+    "inverso": "\033[7m",
+    "invisivel": "\033[8m",
+    "tachado": "\033[9m",
+    "duplosublinhado": "\033[21m",
+    "normal": "\033[22m",
+    "semitalico": "\033[23m",
+    "sem_sublinhado": "\033[24m",
+    "sem_inverso": "\033[27m",
+    "visivel": "\033[28m",
+    "sem_tachado": "\033[29m"
+}
+frase = "CONEXÂO COM O PUDIM"
+
+print(f"{estilos['negrito']}{cores['amarelo']}{"==="*5}{cores['cinza']}PUDIM{cores['amarelo']}{"==="*5}{cores['limpa']}")
+print(f"{cores['cinza']}{fundo['branco']}{estilos['negrito']}{frase.center(35)}{cores['limpa']}")
+print(f"{estilos['negrito']}{cores['amarelo']}{"==="*11+"=="}{cores['limpa']}") 
+
 
 # MÉTODO 1: Usando urllib (biblioteca padrão do Python)
-print("\n1️⃣ MÉTODO COM urllib (biblioteca padrão):")
+print(f"\n1️⃣ {estilos['negrito']}{cores['cinza']}MÉTODO COM {cores['verde']}urllib {estilos['italico']}(biblioteca padrão):{estilos['reset']}")
 print("-" * 50)
 
 import urllib.request
@@ -25,26 +73,26 @@ def testar_site_urllib(url):
     """
     try:
         # Faz a requisição para o site
-        print(f"🔍 Testando conexão com {url}...")
+        print(f"🔍 {cores['cinza']}{estilos['negrito']}Testando conexão com {url}...{cores['limpa']}")
         
         # Define timeout de 10 segundos
         response = urllib.request.urlopen(url, timeout=10)
         
         # Verifica o código de resposta
         if response.getcode() == 200:
-            print(f"✅ SUCESSO! Site {url} está ACESSÍVEL!")
-            print(f"📊 Código de resposta: {response.getcode()}")
+            print(f"✅{cores['verde']}{estilos['negrito']} SUCESSO! Site {url} está ACESSÍVEL!{cores['limpa']}")
+            print(f"📊 {cores['cinza']}{estilos['negrito']}{estilos['italico']}Código de resposta: {response.getcode()}{estilos['reset']}")
             return True
         else:
-            print(f"⚠️  Site responde, mas com código: {response.getcode()}")
+            print(f"⚠️  {cores['amarelo']}{estilos['italico']}{estilos['negrito']}Site responde, mas com código: {response.getcode()}{estilos['reset']}")
             return False
             
     except URLError as e:
-        print(f"❌ ERRO! Site {url} está INACESSÍVEL!")
-        print(f"🚨 Motivo: {e}")
+        print(f"❌ {cores['vermelho']}{estilos['italico']}{estilos['negrito']}{estilos['sublinhado']}ERRO! Site {url} está INACESSÍVEL!{estilos['reset']}")
+        print(f"🚨 {cores['vermelho']}{estilos['negrito']}Motivo: {e}{estilos['reset']}")
         return False
     except Exception as e:
-        print(f"❌ ERRO INESPERADO: {e}")
+        print(f"❌ {cores['vermelho']}{estilos['negrito']}ERRO INESPERADO: {e}{estilos['reset']}")
         return False
 
 # Testando o pudim.com.br
@@ -52,9 +100,9 @@ site_pudim = "http://pudim.com.br"
 resultado_urllib = testar_site_urllib(site_pudim)
 
 # MÉTODO 2: Usando requests (mais popular, mas precisa instalar)
-print("\n" + "="*60)
-print("2️⃣ MÉTODO COM requests (mais profissional):")
-print("-" * 50)
+print(f"{cores['roxo']}{estilos['negrito']}{"\n" + "="*60}{cores['limpa']}")
+print(f"2️⃣  {cores['cinza']}{estilos['negrito']}\tMÉTODO COM requests (mais profissional):{estilos['reset']}")
+print(f"{cores['amarelo']}{estilos['negrito']}{"-" * 50}{cores['limpa']}")
 
 def testar_site_requests(url):
     """
@@ -63,45 +111,45 @@ def testar_site_requests(url):
     try:
         import requests
         
-        print(f"🔍 Testando conexão com {url}...")
+        print(f"🔍 {cores['cinza']}{estilos['negrito']}Testando conexão com {url}...{estilos['reset']}")
         
         # Faz a requisição com timeout
         response = requests.get(url, timeout=10)
         
         # Verifica se deu certo
         if response.status_code == 200:
-            print(f"✅ SUCESSO! Site {url} está ACESSÍVEL!")
-            print(f"📊 Código de resposta: {response.status_code}")
-            print(f"⏱️  Tempo de resposta: {response.elapsed.total_seconds():.2f}s")
+            print(f"✅ {cores['verde']}{estilos['negrito']}SUCESSO! Site {url} está ACESSÍVEL!{estilos['reset']}")
+            print(f"📊 {cores['cinza']}{estilos['negrito']}Código de resposta: {response.status_code}{cores['limpa']}")
+            print(f"⏱️  {cores['amarelo']}{estilos['negrito']}{estilos['italico']}Tempo de resposta: {response.elapsed.total_seconds():.2f}s{estilos['reset']}{cores['limpa']}")
             return True
         else:
-            print(f"⚠️  Site responde, mas com código: {response.status_code}")
+            print(f"⚠️  {cores['amarelo']}{estilos['negrito']}{estilos['italico']}Site responde, mas com código: {response.status_code}{estilos['reset']}")
             return False
             
     except ImportError:
-        print("❌ Biblioteca 'requests' não está instalada!")
+        print(f"❌  {cores['vermelho']}{estilos['italico']}{estilos['negrito']}{estilos['sublinhado']}Biblioteca 'requests' não está instalada!{estilos['reset']}")
         print("💡 Para instalar: pip install requests")
         return False
     except requests.exceptions.Timeout:
-        print(f"❌ TIMEOUT! Site {url} demorou muito para responder!")
+        print(f"❌  {cores['vermelho']}{estilos['italico']}{estilos['negrito']}{estilos['sublinhado']}TIMEOUT! Site {url} demorou muito para responder!{estilos['reset']}")
         return False
     except requests.exceptions.ConnectionError:
-        print(f"❌ ERRO DE CONEXÃO! Não conseguiu conectar com {url}!")
+        print(f"❌  {cores['vermelho']}{estilos['italico']}{estilos['negrito']}{estilos['sublinhado']}ERRO DE CONEXÃO! Não conseguiu conectar com {url}!{estilos['reset']}")
         return False
     except Exception as e:
-        print(f"❌ ERRO: {e}")
+        print(f"❌  {cores['vermelho']}{estilos['italico']}{estilos['negrito']}{estilos['sublinhado']}ERRO: {e}{estilos['reset']}")
         return False
 
 # Tentando usar requests
 try:
     resultado_requests = testar_site_requests(site_pudim)
 except:
-    print("⚠️  Método requests não disponível, usando apenas urllib")
+    print("⚠️  Método requests não disponível, usando apenas urllib{estilos['reset']}")
 
 # MÉTODO 3: Usando socket (mais técnico)
-print("\n" + "="*60)
-print("3️⃣ MÉTODO COM socket (mais técnico):")
-print("-" * 50)
+print(f"{cores['roxo']}{estilos['negrito']}{"\n" + "="*60}{estilos['reset']}")
+print(f"3️⃣ \t{cores['cinza']}{estilos['negrito']}MÉTODO COM socket (mais técnico):{estilos['reset']}")
+print(f"{cores['amarelo']}{estilos['negrito']}{"-" * 50}{estilos['reset']}")
 
 import socket
 
@@ -114,7 +162,7 @@ def testar_site_socket(host, porta=80):
     - porta: porta para testar (padrão: 80 para HTTP)
     """
     try:
-        print(f"🔍 Testando conexão socket com {host}:{porta}...")
+        print(f"🔍 {cores['cinza']}{estilos['negrito']}Testando conexão socket com {host}:{porta}...{estilos['reset']}")
         
         # Cria socket
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
@@ -125,185 +173,21 @@ def testar_site_socket(host, porta=80):
         sock.close()
         
         if resultado == 0:
-            print(f"✅ SUCESSO! Porta {porta} de {host} está ABERTA!")
+            print(f"✅ {cores['verde']}{estilos['negrito']}SUCESSO! Porta {porta} de {host} está ABERTA!{estilos['reset']}")
             return True
         else:
-            print(f"❌ FALHA! Porta {porta} de {host} está FECHADA!")
+            print(f"❌ {cores['vermelho']}{estilos['italico']}{estilos['negrito']}{estilos['sublinhado']} FALHA! Porta {porta} de {host} está FECHADA!{estilos['reset']}")
             return False
             
     except socket.gaierror:
-        print(f"❌ ERRO! Não conseguiu resolver o nome {host}!")
+        print(f"❌  {cores['vermelho']}{estilos['italico']}{estilos['negrito']}{estilos['sublinhado']}ERRO! Não conseguiu resolver o nome {host}!{estilos['reset']}")
         return False
     except Exception as e:
-        print(f"❌ ERRO: {e}")
+        print(f"❌ {cores['vermelho']}{estilos['italico']}{estilos['negrito']}{estilos['sublinhado']} ERRO: {e}{estilos['reset']}")
         return False
 
 # Testando socket
 host_pudim = "pudim.com.br"
 resultado_socket = testar_site_socket(host_pudim)
 
-# MÉTODO 4: Função completa e profissional
-print("\n" + "="*60)
-print("4️⃣ FUNÇÃO COMPLETA E PROFISSIONAL:")
-print("-" * 50)
 
-def verificar_site_completo(url):
-    """
-    Função completa para verificar se um site está acessível
-    
-    Testa várias camadas:
-    1. Resolução DNS
-    2. Conectividade TCP
-    3. Resposta HTTP
-    
-    Parâmetro:
-    - url: URL completa do site
-    
-    Retorna:
-    - dict com informações detalhadas do teste
-    """
-    import urllib.parse
-    
-    resultado = {
-        'site': url,
-        'acessivel': False,
-        'tempo_resposta': None,
-        'codigo_http': None,
-        'erro': None,
-        'detalhes': []
-    }
-    
-    try:
-        # Parse da URL
-        parsed = urllib.parse.urlparse(url)
-        host = parsed.netloc or parsed.path
-        
-        resultado['detalhes'].append(f"🔍 Analisando: {url}")
-        resultado['detalhes'].append(f"🏠 Host: {host}")
-        
-        # Teste 1: Resolução DNS
-        try:
-            import socket
-            ip = socket.gethostbyname(host)
-            resultado['detalhes'].append(f"✅ DNS OK - IP: {ip}")
-        except:
-            resultado['erro'] = "Erro na resolução DNS"
-            resultado['detalhes'].append("❌ Erro na resolução DNS")
-            return resultado
-        
-        # Teste 2: Conectividade HTTP
-        start_time = time.time()
-        
-        response = urllib.request.urlopen(url, timeout=15)
-        
-        end_time = time.time()
-        resultado['tempo_resposta'] = round(end_time - start_time, 2)
-        resultado['codigo_http'] = response.getcode()
-        
-        if response.getcode() == 200:
-            resultado['acessivel'] = True
-            resultado['detalhes'].append(f"✅ HTTP OK - Código: {response.getcode()}")
-            resultado['detalhes'].append(f"⏱️  Tempo: {resultado['tempo_resposta']}s")
-        else:
-            resultado['detalhes'].append(f"⚠️  HTTP - Código: {response.getcode()}")
-        
-    except Exception as e:
-        resultado['erro'] = str(e)
-        resultado['detalhes'].append(f"❌ Erro: {e}")
-    
-    return resultado
-
-# Testando função completa
-print("\n🧪 TESTE COMPLETO DO PUDIM.COM.BR:")
-relatorio = verificar_site_completo("http://pudim.com.br")
-
-print(f"\n📋 RELATÓRIO DETALHADO:")
-print(f"🌐 Site: {relatorio['site']}")
-print(f"🔗 Acessível: {'✅ SIM' if relatorio['acessivel'] else '❌ NÃO'}")
-if relatorio['tempo_resposta']:
-    print(f"⏱️  Tempo de resposta: {relatorio['tempo_resposta']}s")
-if relatorio['codigo_http']:
-    print(f"📊 Código HTTP: {relatorio['codigo_http']}")
-if relatorio['erro']:
-    print(f"🚨 Erro: {relatorio['erro']}")
-
-print(f"\n📝 Detalhes do teste:")
-for detalhe in relatorio['detalhes']:
-    print(f"   {detalhe}")
-
-# PROGRAMA PRINCIPAL SIMPLES
-print("\n" + "="*60)
-print("🎯 PROGRAMA PRINCIPAL SIMPLIFICADO:")
-print("-" * 50)
-
-def main():
-    """Programa principal para testar o pudim.com.br"""
-    
-    print("🍮 VERIFICADOR DE SITE - PUDIM.COM.BR")
-    print("="*40)
-    
-    sites_para_testar = [
-        "http://pudim.com.br",
-        "https://pudim.com.br",
-        "http://www.pudim.com.br"
-    ]
-    
-    for site in sites_para_testar:
-        print(f"\n🔍 Testando: {site}")
-        
-        try:
-            response = urllib.request.urlopen(site, timeout=10)
-            if response.getcode() == 200:
-                print(f"✅ {site} está FUNCIONANDO!")
-            else:
-                print(f"⚠️  {site} - Código: {response.getcode()}")
-        except Exception as e:
-            print(f"❌ {site} está FORA DO AR!")
-            print(f"   Erro: {str(e)[:50]}...")
-    
-    print("\n" + "="*40)
-    print("🎯 TESTE CONCLUÍDO!")
-
-# Executando programa principal
-main()
-
-print("\n" + "="*60)
-print("📚 EXPLICAÇÃO TÉCNICA:")
-print("="*60)
-
-print("""
-🎯 O QUE O CÓDIGO FAZ:
-
-1. URLLIB (padrão do Python):
-   • Faz requisição HTTP para o site
-   • Verifica código de resposta (200 = OK)
-   • Não precisa instalar nada
-
-2. REQUESTS (mais popular):
-   • Mais fácil de usar
-   • Mais informações (tempo, etc.)
-   • Precisa: pip install requests
-
-3. SOCKET (baixo nível):
-   • Testa conectividade TCP
-   • Verifica se porta está aberta
-   • Mais técnico
-
-4. FUNÇÃO COMPLETA:
-   • Testa DNS, TCP e HTTP
-   • Relatório detalhado
-   • Informações completas
-
-💡 CÓDIGOS HTTP IMPORTANTES:
-• 200 = OK (site funcionando)
-• 404 = Não encontrado
-• 500 = Erro do servidor
-• Timeout = Site muito lento
-
-🎯 PUDIM.COM.BR:
-Site clássico brasileiro usado para testes!
-Famoso por sua simplicidade e estabilidade.
-""")
-
-print("\n🎉 AGORA VOCÊ SABE TESTAR QUALQUER SITE!")
-print("="*60)
