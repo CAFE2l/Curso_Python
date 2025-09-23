@@ -191,3 +191,22 @@ host_pudim = "pudim.com.br"
 resultado_socket = testar_site_socket(host_pudim)
 
 
+
+solution = "SOLUÇÃO DO GUANÁ"
+
+print(f"{estilos['negrito']}{cores['ciano']}{"==="*5}{cores['cinza']}GUANÁ{cores['ciano']}{"==="*5}{cores['limpa']}")
+print(f"{cores['pretoebranco']}{estilos['negrito']}{solution.center(35)}{cores['limpa']}")
+print(f"{estilos['negrito']}{cores['ciano']}{"==="*11+"=="}{cores['limpa']}")
+
+
+import urllib
+import urllib.request
+
+
+try:
+    site = urllib.request.urlopen('http://pudim.com.br')
+except: 
+    print('O site Pudim não está acessível no momento.')
+else:
+    print("Consegui acessar o site Pudim com Sucesso :D")
+    print(site.read())
