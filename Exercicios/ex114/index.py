@@ -96,19 +96,29 @@ print(f"{estilos['negrito']}{cores['ciano']}{"==="*11+"=="}{cores['limpa']}")
 
 from pessoa import cabeçalho, linha, menu
 from time import sleep
-from arquivo import arquivoExiste
+from arquivo import arquivoExiste, criarArquivo
 
 arq = 'cursoemvideo.txt'
 
-if arquivoExiste(arq):
-    print('Arquivo Encontrado com Sucesso!')
-else:
-    print('Arquivo não Encontrado!')
+if not arquivoExiste(arq):
+    criarArquivo(arq)
 
+    criarArquivo = input('Deseja criar o arquivo? [S/N] ').strip().upper()[0]   
+    if criarArquivo == 'S':
+        try:
+            a = open(arq, 'wt+')
+            a.close()
+        except:
+            print('Houve um erro na criação do arquivo!')
+        else:
+            print(f'Arquivo {arq} criado com sucesso!')
+    else:
+        print('Saindo do sistema... Até logo!')
 while True:
     resposta = menu(['Ver pessoas cadastradas', 'Cadastrar nova Pessoa', 'Sair do Sistema'])
     if resposta == 1:
-        cabeçalho('Opcão 1')
+        #opção de listar o conteúdo de um arquivo
+        lerArquivo(arq)
     elif resposta == 2:
         cabeçalho('Opcão 2')
     elif resposta == 3:
