@@ -74,13 +74,13 @@ def menu():
         elif opcao == "2":
             pessoas = listar_pessoas()
             if pessoas:
-                print(f"\n{cores['amarelo']}{estilos['negrito']}Pessoas cadastradas:{cores['limpa']}")
+                print(f"\n{cores['amarelo']}{estilos['negrito']}{estilos['italico']}Pessoas cadastradas:{cores['limpa']}")
                 for pessoa in pessoas:
-                    print(f"Nome: {pessoa[0]}, Idade: {pessoa[1]}")
+                    print(f"{cores['vermelho']}{estilos['negrito']}Nome:{cores['cinza']} {pessoa[0]}, {cores['verde']}Idade: {cores['cinza']}{pessoa[1]}{cores['limpa']}")
             else:
-                print(f"Nenhuma pessoa cadastrada.")
+                print(f"{cores['vermelho']}{estilos['negrito']}{estilos['italico']}{estilos['sublinhado']}Nenhuma pessoa cadastrada.{cores['limpa']}")
         elif opcao == "0":
-            print(f"{cores['amarelo']}Saindo...{cores['limpa']}")
+            print(f"{cores['amarelo']}{estilos['italico']}{estilos['negrito']}Saindo...{cores['limpa']}")
             break
         else:
             print(f"{cores['vermelho']}{estilos['negrito']}{estilos['sublinhado']}Opção inválida!{cores['limpa']}")
