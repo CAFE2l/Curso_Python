@@ -1,5 +1,5 @@
-from modulo.pessoas import cadastrar_pessoa, listar_pessoas
-
+import pessoas
+from pessoas import cadastrar_pessoa, listar_pessoas
 
 cores = {
     "limpa": "\033[m",
@@ -74,7 +74,7 @@ def menu():
         elif opcao == "2":
             pessoas = listar_pessoas()
             if pessoas:
-                print(f"\nPessoas cadastradas:")
+                print(f"\n{cores['amarelo']}{estilos['negrito']}Pessoas cadastradas:{cores['limpa']}")
                 for pessoa in pessoas:
                     print(f"Nome: {pessoa[0]}, Idade: {pessoa[1]}")
             else:
@@ -84,3 +84,12 @@ def menu():
             break
         else:
             print(f"{cores['vermelho']}{estilos['negrito']}{estilos['sublinhado']}Opção inválida!{cores['limpa']}")
+
+
+menu()
+
+solution = "SOLUÇÃO DO GUANÁ"
+
+print(f"{estilos['negrito']}{cores['ciano']}{"==="*5}{cores['cinza']}GUANÁ{cores['ciano']}{"==="*5}{cores['limpa']}")
+print(f"{cores['pretoebranco']}{estilos['negrito']}{solution.center(35)}{cores['limpa']}")
+print(f"{estilos['negrito']}{cores['ciano']}{"==="*11+"=="}{cores['limpa']}")

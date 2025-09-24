@@ -1,9 +1,9 @@
 # arquivo: pessoas.py
-def cadastrar_pessoa(nome, idade, arquivo="pessoas.txt"):
+def cadastrar_pessoa(nome, idade, arquivo="pessoas.txt", append=True):
     with open(arquivo, "a") as f:
         f.write(f"{nome},{idade}\n")
 
-def listar_pessoas(arquivo="pessoas.txt"):
+def listar_pessoas(arquivo="pessoas.txt", append=True):
     pessoas = []
     try:
         with open(arquivo, "r") as f:
