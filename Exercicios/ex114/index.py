@@ -94,9 +94,9 @@ print(f"{estilos['negrito']}{cores['ciano']}{"==="*5}{cores['cinza']}GUANÁ{core
 print(f"{cores['pretoebranco']}{estilos['negrito']}{solution.center(35)}{cores['limpa']}")
 print(f"{estilos['negrito']}{cores['ciano']}{"==="*11+"=="}{cores['limpa']}")
 
-from pessoa import cabeçalho, linha, menu
+from pessoa import cabeçalho, linha, menu, leiaInt
 from time import sleep
-from arquivo import arquivoExiste, criarArquivo
+from arquivo import arquivoExiste, criarArquivo, lerArquivo, cadastrar
 
 arq = 'cursoemvideo.txt'
 
@@ -120,7 +120,10 @@ while True:
         #opção de listar o conteúdo de um arquivo
         lerArquivo(arq)
     elif resposta == 2:
-        cabeçalho('Opcão 2')
+        cabeçalho('NOVO CADASTRO')
+        nome = str(input('Nome: '))
+        idade = leiaInt('Idade:')
+        cadastrar(arq, nome, idade)
     elif resposta == 3:
         cabeçalho('Saindo do sistema... Até logo!')
         break
