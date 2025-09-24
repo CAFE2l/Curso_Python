@@ -93,3 +93,27 @@ solution = "SOLUÇÃO DO GUANÁ"
 print(f"{estilos['negrito']}{cores['ciano']}{"==="*5}{cores['cinza']}GUANÁ{cores['ciano']}{"==="*5}{cores['limpa']}")
 print(f"{cores['pretoebranco']}{estilos['negrito']}{solution.center(35)}{cores['limpa']}")
 print(f"{estilos['negrito']}{cores['ciano']}{"==="*11+"=="}{cores['limpa']}")
+
+from pessoa import cabeçalho, linha, menu
+from time import sleep
+from arquivo import arquivoExiste
+
+arq = 'cursoemvideo.txt'
+
+if arquivoExiste(arq):
+    print('Arquivo Encontrado com Sucesso!')
+else:
+    print('Arquivo não Encontrado!')
+
+while True:
+    resposta = menu(['Ver pessoas cadastradas', 'Cadastrar nova Pessoa', 'Sair do Sistema'])
+    if resposta == 1:
+        cabeçalho('Opcão 1')
+    elif resposta == 2:
+        cabeçalho('Opcão 2')
+    elif resposta == 3:
+        cabeçalho('Saindo do sistema... Até logo!')
+        break
+    else:
+        print('\033[31mERRO! Digite uma opção válida.\033[m')
+    sleep(2)
